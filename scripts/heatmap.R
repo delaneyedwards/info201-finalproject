@@ -8,12 +8,17 @@ data_states_extended <- read.csv("states_all_extended.csv")
 
 after_2000_refined <- data_states %>% 
   filter(YEAR > 2011 & YEAR < 2016) %>% 
-  select(STATE, INSTRUCTION_EXPENDITURE, SUPPORT_SERVICES_EXPENDITURE) %>% 
+  select(STATE, 
+         INSTRUCTION_EXPENDITURE, 
+         SUPPORT_SERVICES_EXPENDITURE, 
+         ENROLL) %>% 
   group_by(STATE) %>% 
   summarize(mean_inst_exp = mean(INSTRUCTION_EXPENDITURE, na.rm = TRUE),
-            mean_ss_exp = mean(SUPPORT_SERVICES_EXPENDITURE, na.rm = TRUE)) %>%
+            mean_ss_exp = mean(SUPPORT_SERVICES_EXPENDITURE, na.rm = TRUE),
+            mean_enrolled = mean(ENROLL, na.rm = TRUE)) %>%
   group_by(STATE) %>% 
-  mutate(expenditure = sum(mean_inst_exp + mean_ss_exp, na.rm = TRUE))
+  mutate(expenditure = sum(mean_inst_exp + mean_ss_exp, na.rm = TRUE)) %>% 
+  mutate(exp_per_student = expenditure/mean_enrolled)
 
 after_2000_refined$STATE <- tolower(after_2000_refined$STATE)
 after_2000_refined$STATE <- gsub('_', ' ', after_2000_refined$STATE)
@@ -35,6 +40,17 @@ ggplot(state_shape) +
                         high = "Red",
                         limits = c(800000, 58000000)) +
   labs(fill = "Money Spent on Education") +
+  blank_theme
+
+ggplot(state_shape) +
+  geom_polygon(
+    mapping = aes(x = long, y = lat, group = group, fill = exp_per_student),
+    color = "white",
+    size = .1
+  ) +
+  coord_map() +
+  scale_fill_continuous(low = "Yellow", high = "Red") +
+  labs(fill = "Average amount of money per Child") +
   blank_theme
 
 math_scores_refined <- data_states %>% 
