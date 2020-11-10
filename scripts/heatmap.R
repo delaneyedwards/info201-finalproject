@@ -2,9 +2,10 @@ library("tidyverse")
 library("ggplot2")
 install.packages("mapproj")
 
-setwd("C:\\Users\\sahit\\Desktop\\info201-groupproject\\data")
-data_states <- read.csv("states_all.csv")
+data_states <- read.csv("data/states_all.csv")
 
+# this data set will create a table with the means of the expenditures, students
+# enrolled, and expenditure per state for the years 2012 - 2015
 after_2000_refined <- data_states %>% 
   filter(YEAR > 2011 & YEAR < 2016) %>% 
   select(STATE, 
@@ -28,6 +29,8 @@ state_shape <- map_data("state") %>%
   rename(STATE = region) %>% 
   left_join(after_2000_refined, by = "STATE")
 
+# this creates a heatmap of the Money Spent on Education for each state from 
+# the years 2012 to 2015
 ggplot(state_shape) +
   geom_polygon(
     mapping = aes(x = long, y = lat, group = group, fill = expenditure),
@@ -41,6 +44,8 @@ ggplot(state_shape) +
   labs(fill = "Money Spent on Education") +
   blank_theme
 
+# this creates a heatmap of the Money Spent on Education per child for each 
+# state from the years 2012 to 2015
 ggplot(state_shape) +
   geom_polygon(
     mapping = aes(x = long, y = lat, group = group, fill = exp_per_student),
@@ -52,6 +57,8 @@ ggplot(state_shape) +
   labs(fill = "Average amount of money per Child") +
   blank_theme
 
+# this data set will create a table with the average test scores for 4th 
+# and 8th graders per state for the years 2012 - 2015
 math_scores_refined <- data_states %>% 
   filter(YEAR > 2011 & YEAR < 2016) %>% 
   select(STATE, AVG_MATH_4_SCORE:AVG_READING_8_SCORE) %>% 
@@ -71,6 +78,8 @@ state_shape_grade_4 <- map_data("state") %>%
   rename(STATE = region) %>% 
   left_join(math_scores_refined, by = "STATE")
 
+# this creates a heatmap of the Average 4th Grade Score per 4th grader for each 
+# state from the years 2012 to 2015
 ggplot(state_shape_grade_4) +
   geom_polygon(
     mapping = aes(x = long, y = lat, group = group, fill = grade_4),
@@ -86,6 +95,8 @@ state_shape_grade_8 <- map_data("state") %>%
   rename(STATE = region) %>% 
   left_join(math_scores_refined, by = "STATE")
 
+# this creates a heatmap of the Average 8th Grade Score per 8th grader for each 
+# state from the years 2012 to 2015
 ggplot(state_shape_grade_8) +
   geom_polygon(
     mapping = aes(x = long, y = lat, group = group, fill = grade_8),
