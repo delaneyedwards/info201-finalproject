@@ -35,6 +35,7 @@ enrollment_demographics <- enrollment %>%
     key = Demographic,
     value = count, 
   ) %>% 
+  filter(count >= 0) %>% 
   group_by(Demographic) %>% 
   summarise(total = sum(count, na.rm = TRUE))
   
@@ -73,6 +74,7 @@ GT_demographics <- GT %>%
     key = Demographic,
     value = count, 
   ) %>% 
+  filter(count >= 0) %>% 
   group_by(Demographic) %>% 
   summarise(total = sum(count, na.rm = TRUE))
 
@@ -112,6 +114,7 @@ AP_demographics <- AP %>%
     key = Demographic,
     value = count, 
   ) %>% 
+  filter(count >= 0) %>% 
   group_by(Demographic) %>% 
   summarise(total = sum(count, na.rm = TRUE))
 
@@ -150,6 +153,7 @@ IB_demographics <- IB %>%
     key = Demographic,
     value = count, 
   ) %>% 
+  filter(count >= 0) %>% 
   group_by(Demographic) %>% 
   summarise(total = sum(count, na.rm = TRUE))
 
