@@ -83,9 +83,6 @@ ggplot(state_shape_grade_4) +
   labs(fill = "Average 4th Grade Scores") +
   blank_theme
 
-math_scores_refined$STATE <- tolower(math_scores_refined$STATE)
-math_scores_refined$STATE <- gsub('_', ' ', math_scores_refined$STATE)
-
 blank_theme <- theme_bw() +
   theme(
     axis.line = element_blank(),
