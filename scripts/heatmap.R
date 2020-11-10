@@ -4,7 +4,6 @@ install.packages("mapproj")
 
 setwd("C:\\Users\\sahit\\Desktop\\info201-groupproject\\data")
 data_states <- read.csv("states_all.csv")
-data_states_extended <- read.csv("states_all_extended.csv")
 
 after_2000_refined <- data_states %>% 
   filter(YEAR > 2011 & YEAR < 2016) %>% 
@@ -81,6 +80,21 @@ ggplot(state_shape_grade_4) +
   coord_map() +
   scale_fill_continuous(low = "Yellow", high = "Red") +
   labs(fill = "Average 4th Grade Scores") +
+  blank_theme
+
+state_shape_grade_8 <- map_data("state") %>% 
+  rename(STATE = region) %>% 
+  left_join(math_scores_refined, by = "STATE")
+
+ggplot(state_shape_grade_8) +
+  geom_polygon(
+    mapping = aes(x = long, y = lat, group = group, fill = grade_8),
+    color = "white",
+    size = .1
+  ) +
+  coord_map() +
+  scale_fill_continuous(low = "Yellow", high = "Red") +
+  labs(fill = "Average 8th Grade Scores") +
   blank_theme
 
 blank_theme <- theme_bw() +
