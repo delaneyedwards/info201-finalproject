@@ -7,7 +7,7 @@ GT <- read.csv("data/Gifted\ and\ Talented.csv")
 AP <- read_csv("data/Advanced\ Placement.csv")
 IB <- read_csv("data/International\ Baccalaureate.csv")
 
-enrollment_demographics <- enrollment %>% 
+enrollment_race <- enrollment %>% 
   select(
     SCH_ENR_HI_M,
     SCH_ENR_HI_F,
@@ -32,21 +32,22 @@ enrollment_demographics <- enrollment %>%
   mutate("White" = SCH_ENR_WH_M + SCH_ENR_WH_F, .keep = "unused") %>% 
   mutate("Two or more races" = SCH_ENR_TR_M + SCH_ENR_TR_F, .keep = "unused") %>% 
   gather(
-    key = Demographic,
+    key = race,
     value = count, 
   ) %>% 
   filter(count >= 0) %>% 
-  group_by(Demographic) %>% 
-  summarise(total = sum(count, na.rm = TRUE))
+  group_by(race) %>% 
+  summarise(total = sum(count, na.rm = TRUE)) %>% 
+  mutate(program = "all_students")
   
-enrollment_pie <- ggplot(enrollment_demographics, aes(x = "", y = total, fill = Demographic)) +
-  geom_bar(stat = "identity", width = 1) +
-  coord_polar("y", start = 0) +
-  theme_void() + 
-  labs(title = "Student Enrollment", subtitle = "Proportion of students enrolled in all schools and justice facilities, preschool-grade 12") +
-  geom_text(aes(label = paste(round(total / sum(total) * 100, 1), "%"), x = 1.4), position = position_stack(vjust = 0.5), size = 3)
+# enrollment_pie <- ggplot(enrollment_race, aes(x = "", y = total, fill = race)) +
+#   geom_bar(stat = "identity", width = 1) +
+#   coord_polar("y", start = 0) +
+#   theme_void() + 
+#   labs(title = "Student Enrollment", subtitle = "Proportion of students enrolled in all schools and justice facilities, preschool-grade 12") +
+#   geom_text(aes(label = paste(round(total / sum(total) * 100, 1), "%"), x = 1.4), position = position_stack(vjust = 0.5), size = 3)
 
-GT_demographics <- GT %>% 
+GT_race <- GT %>% 
   select(
     SCH_GTENR_HI_M,
     SCH_GTENR_HI_F,
@@ -71,22 +72,23 @@ GT_demographics <- GT %>%
   mutate("White" = SCH_GTENR_WH_M + SCH_GTENR_WH_F, .keep = "unused") %>% 
   mutate("Two or more races" = SCH_GTENR_TR_M + SCH_GTENR_TR_F, .keep = "unused") %>% 
   gather(
-    key = Demographic,
+    key = race,
     value = count, 
   ) %>% 
   filter(count >= 0) %>% 
-  group_by(Demographic) %>% 
-  summarise(total = sum(count, na.rm = TRUE))
+  group_by(race) %>% 
+  summarise(total = sum(count, na.rm = TRUE)) %>% 
+  mutate(program = "GT")
 
-GT_pie <- ggplot(GT_demographics, aes(x = "", y = total, fill = Demographic)) +
-  geom_bar(stat = "identity", width = 1) +
-  coord_polar("y", start = 0) +
-  theme_void() + 
-  labs(title = "Gifted and Talented Enrollment", subtitle = "Proportion of students enrolled in gifted and talented programs, preschool-grade 12") +
-  geom_text(aes(label = paste(round(total / sum(total) * 100, 1), "%"), x = 1.4), position = position_stack(vjust = 0.5), size = 3)
+# GT_pie <- ggplot(GT_race, aes(x = "", y = total, fill = race)) +
+#   geom_bar(stat = "identity", width = 1) +
+#   coord_polar("y", start = 0) +
+#   theme_void() + 
+#   labs(title = "Gifted and Talented Enrollment", subtitle = "Proportion of students enrolled in gifted and talented programs, preschool-grade 12") +
+#   geom_text(aes(label = paste(round(total / sum(total) * 100, 1), "%"), x = 1.4), position = position_stack(vjust = 0.5), size = 3)
 
 
-AP_demographics <- AP %>% 
+AP_race <- AP %>% 
   select(
     SCH_APENR_HI_M,
     SCH_APENR_HI_F,
@@ -111,21 +113,23 @@ AP_demographics <- AP %>%
   mutate("White" = SCH_APENR_WH_M + SCH_APENR_WH_F, .keep = "unused") %>% 
   mutate("Two or more races" = SCH_APENR_TR_M + SCH_APENR_TR_F, .keep = "unused") %>% 
   gather(
-    key = Demographic,
+    key = race,
     value = count, 
   ) %>% 
   filter(count >= 0) %>% 
-  group_by(Demographic) %>% 
-  summarise(total = sum(count, na.rm = TRUE))
+  group_by(race) %>% 
+  summarise(total = sum(count, na.rm = TRUE)) %>% 
+  mutate(program = "AP")
 
-AP_pie <- ggplot(AP_demographics, aes(x = "", y = total, fill = Demographic)) +
-  geom_bar(stat = "identity", width = 1) +
-  coord_polar("y", start = 0) +
-  theme_void() + 
-  labs(title = "AP Enrollment", subtitle = "Proportion of students enrolled in an AP program, grade 9-12") +
-  geom_text(aes(label = paste(round(total / sum(total) * 100, 1), "%"), x = 1.4), position = position_stack(vjust = 0.5), size = 3)
 
-IB_demographics <- IB %>% 
+# AP_pie <- ggplot(AP_race, aes(x = "", y = total, fill = race)) +
+#   geom_bar(stat = "identity", width = 1) +
+#   coord_polar("y", start = 0) +
+#   theme_void() + 
+#   labs(title = "AP Enrollment", subtitle = "Proportion of students enrolled in an AP program, grade 9-12") +
+#   geom_text(aes(label = paste(round(total / sum(total) * 100, 1), "%"), x = 1.4), position = position_stack(vjust = 0.5), size = 3)
+
+IB_race <- IB %>% 
   select(
     SCH_IBENR_HI_M,
     SCH_IBENR_HI_F,
@@ -150,20 +154,26 @@ IB_demographics <- IB %>%
   mutate("White" = SCH_IBENR_WH_M + SCH_IBENR_WH_F, .keep = "unused") %>% 
   mutate("Two or more races" = SCH_IBENR_TR_M + SCH_IBENR_TR_F, .keep = "unused") %>% 
   gather(
-    key = Demographic,
+    key = race,
     value = count, 
   ) %>% 
   filter(count >= 0) %>% 
-  group_by(Demographic) %>% 
-  summarise(total = sum(count, na.rm = TRUE))
+  group_by(race) %>% 
+  summarise(total = sum(count, na.rm = TRUE)) %>% 
+  mutate(program = "IB")
 
-IB_pie <- ggplot(IB_demographics, aes(x = "", y = total, fill = Demographic)) +
-  geom_bar(stat = "identity", width = 1) +
-  coord_polar("y", start = 0) +
-  theme_void() + 
-  labs(title = "International Baccalaureate (IB) Diploma Programme Enrollment", subtitle = "Proportion of students enrolled in an IB Diploma Programme, grade 9-12") +
-  geom_text(aes(label = paste(round(total / sum(total) * 100, 1), "%"), x = 1.4), position = position_stack(vjust = 0.5), size = 3)
+# IB_pie <- ggplot(IB_race, aes(x = "", y = total, fill = race)) +
+#   geom_bar(stat = "identity", width = 1) +
+#   coord_polar("y", start = 0) +
+#   theme_void() + 
+#   labs(title = "International Baccalaureate (IB) Diploma Programme Enrollment", subtitle = "Proportion of students enrolled in an IB Diploma Programme, grade 9-12") +
+#   geom_text(aes(label = paste(round(total / sum(total) * 100, 1), "%"), x = 1.4), position = position_stack(vjust = 0.5), size = 3)
 
+all_race = rbind(enrollment_race, GT_race, AP_race, IB_race)
 
-  
+ggplot(all_race) +
+  geom_col(
+    mapping = aes(x = program, y = total, fill = race), position = "fill"
+  ) +
+  labs(x = "Program", y = "Proportion", fill = "Race", title = "Distribution of Race Across Educational Programs")
 
