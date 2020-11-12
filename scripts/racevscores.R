@@ -53,7 +53,7 @@ reading_race <- states_extended_data %>%
   summarize(Score = mean(Score, na.rm = T)) #average the scores over time
 
 
-ggplot(data = reading_race) +
+reading_and_race <- ggplot(data = reading_race) +
   geom_col(mapping = aes(x = Race, y = Score)) +
   labs(title = "Average NAEP Reading Score by Race")
 

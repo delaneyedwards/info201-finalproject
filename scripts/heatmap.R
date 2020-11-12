@@ -1,7 +1,8 @@
 library("tidyverse")
 library("ggplot2")
-install.packages("mapproj")
+library("mapproj")
 
+setwd("C:/Users/sahit/Desktop/info201-groupproject")
 data_states <- read.csv("data/states_all.csv")
 
 # this data set will create a table with the means of the expenditures, students
@@ -23,7 +24,19 @@ after_2000_refined <- data_states %>%
 after_2000_refined$STATE <- tolower(after_2000_refined$STATE)
 after_2000_refined$STATE <- gsub('_', ' ', after_2000_refined$STATE)
 
-install.packages("maps")
+library("maps")
+
+blank_theme <- theme_bw() +
+  theme(
+    axis.line = element_blank(),
+    axis.text = element_blank(),
+    axis.ticks = element_blank(),
+    axis.title = element_blank(),
+    plot.background = element_blank(),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.border = element_blank()
+  )
 
 state_shape <- map_data("state") %>% 
   rename(STATE = region) %>% 
@@ -46,7 +59,7 @@ ggplot(state_shape) +
 
 # this creates a heatmap of the Money Spent on Education per child for each 
 # state from the years 2012 to 2015
-ggplot(state_shape) +
+spent_per_child <- ggplot(state_shape) +
   geom_polygon(
     mapping = aes(x = long, y = lat, group = group, fill = exp_per_student),
     color = "white",
@@ -108,14 +121,6 @@ ggplot(state_shape_grade_8) +
   labs(fill = "Average 8th Grade Scores") +
   blank_theme
 
-blank_theme <- theme_bw() +
-  theme(
-    axis.line = element_blank(),
-    axis.text = element_blank(),
-    axis.ticks = element_blank(),
-    axis.title = element_blank(),
-    plot.background = element_blank(),
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    panel.border = element_blank()
-  )
+the_max <- after_2000_refined %>%
+  filter(exp_per_student == max(exp_per_student)) %>%
+  pull(exp_per_student)
