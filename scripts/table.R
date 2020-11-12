@@ -1,8 +1,8 @@
 library("tidyverse")
 library("knitr")
 
-states_all_extended <- read.csv("https://raw.githubusercontent.com/info201b-au20/project-kellenmcgibbon/gh-pages/data/states_all_extended.csv?token=ARHGKDWWYSBRXYTE5XSXDXC7WMYOE")
-states_all <- read.csv("https://raw.githubusercontent.com/info201b-au20/project-kellenmcgibbon/gh-pages/data/states_all.csv?token=ARHGKDQRPCKSQUYR2XV3VRK7WMYSA")
+states_all_extended <- read.csv("data/states_all_extended.csv")
+states_all <- read.csv("data/states_all.csv")
 
 avg_scores <- states_all %>%
   filter(YEAR == 2015) %>%
