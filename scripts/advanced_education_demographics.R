@@ -171,7 +171,7 @@ IB_race <- IB %>%
 
 all_race = rbind(enrollment_race, GT_race, AP_race, IB_race)
 
-ggplot(all_race) +
+graph <- ggplot(all_race) +
   geom_col(
     mapping = aes(x = program, y = total, fill = race), position = "fill"
   ) +

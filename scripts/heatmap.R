@@ -2,7 +2,7 @@ library("tidyverse")
 library("ggplot2")
 library("mapproj")
 
-setwd("C:/Users/sahit/Desktop/info201-groupproject")
+#setwd("C:/Users/sahit/Desktop/info201-groupproject")
 data_states <- read.csv("data/states_all.csv")
 
 # this data set will create a table with the means of the expenditures, students

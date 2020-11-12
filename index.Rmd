@@ -1,0 +1,39 @@
+---
+title: "Factors that Effect Education"
+author: Sahithi, Delaney, Kellen, Angela, and Brian
+date: November 12, 2020
+output: html_document
+---
+```{r include = FALSE}
+source("scripts/table.R")
+```
+```{r include = FALSE}
+kable(states_table[])
+```
+
+```{r include = FALSE}
+source("scripts/heatmap.R")
+```
+This is our group's report about the factors that effect student performance.
+
+Below is a heatmap of the Money Spent on Education per child for each state from the years 2012 to 2015:
+
+```{r echo = FALSE}
+spent_per_child
+```
+
+```{r include = FALSE}
+source("scripts/racevscores.R")
+```
+This chart is meant to show the relationship between a student's race and their performance on standardized math tests. We acknowledge that race is not the only factor that can affect this performance, but the disparities between races are clear. It shows that Asian students are the highest performing and that black/African American students score the lowest on the standardized math test. 
+
+```{r echo = FALSE}
+math_and_race
+```
+
+```{r include = FALSE}
+source("scripts/advanced_education_demographics.R")
+```
+```{r echo = FALSE}
+graph
+```
