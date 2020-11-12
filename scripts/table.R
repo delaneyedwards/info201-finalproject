@@ -10,7 +10,7 @@ avg_scores <- states_all %>%
          AVG_READING_4_SCORE,
          AVG_READING_8_SCORE)
 
-scores_by_race<- states_all_extended %>%
+scores_by_race <- states_all_extended %>%
   filter(YEAR == 2015) %>%
   group_by(STATE) %>%
   select(STATE, 
@@ -78,7 +78,7 @@ states_table <- mutate(
          HAWAIIAN_NATIVE_PACIFIC_ISLANDER,
          TWO_OR_MORE_RACES
          ) 
-
+table_states <- kable(states_table)
  
 
 
