@@ -29,7 +29,7 @@ math_race <- states_extended_data %>%
   
 
 ggplot(data = math_race) +
-  geom_col(mapping = aes(x = Race, y = Score)) +
+  geom_col(mapping = aes(x = Race, y = Score), fill = "darkolivegreen4", width = 0.5, position = position_dodge(width=0.5)) +
   labs(title = "Average NAEP Math Score by Race")
 
 reading_race <- states_extended_data %>%
@@ -49,13 +49,16 @@ reading_race <- states_extended_data %>%
   rename("Hawaiian Native/Pacific Islander" = G08_HP_A_READING) %>% 
   rename("Two or More Races" = G08_TR_A_READING) %>% 
   gather(key = Race, value = Score) %>% #shift table to be long (i.e. race as row)
+  mutate("Test Type" = "Reading") %>% 
   group_by(Race) %>% 
   summarize(Score = mean(Score, na.rm = T)) #average the scores over time
 
 
 ggplot(data = reading_race) +
-  geom_col(mapping = aes(x = Race, y = Score)) +
+  geom_col(mapping = aes(x = Race, y = Score), fill = "darkolivegreen4", width = 0.5, position = position_dodge(width=0.5)) +
   labs(title = "Average NAEP Reading Score by Race")
+
+
 
   
   
