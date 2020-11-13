@@ -1,6 +1,8 @@
 library("tidyverse")
 library("knitr")
 
+library("lintr")
+library("styler")
 states_all_extended <- read.csv("data/states_all_extended.csv")
 states_all <- read.csv("data/states_all.csv")
 

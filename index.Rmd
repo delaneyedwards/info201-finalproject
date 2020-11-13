@@ -1,7 +1,7 @@
 ---
 title: "Factors that Effect Education"
-author: Sahithi, Delaney, Kellen, Angela, and Brian
-date: November 12, 2020
+author: Sahithi Yakkali, Delaney Edwards, Kellen McGibbon, Angela Yun, and Brian Park
+date: November 13, 2020
 output: html_document
 ---
 This project is looking at how demographics and government funding can affect educational achievement of students in the U.S. Specifically, we are asking questions like “How does race correlate to students’ achievement on standardized tests?” and “What are the demographics of students in advanced classes?”.
@@ -56,6 +56,8 @@ This chart is meant to show the relationship between a student's race and their 
 ```{r echo = FALSE}
 math_and_race
 ```
+
+The purpose of including this chart was to see if there is a disproportionate number of white students enrolled in advanced education programs in comparison to racial and ethnic racial minority groups. This first stacked bar chart shows the proportion of all students enrolled as a baseline. The following charts show the distribution of race among gifted and talented programs, the Advanced Placement (AP) program, and the International Baccalaureate (IB) program. According to the charts, there is a disproportionately high number of white students enrolled in gifted and talented programs and Advanced Placement programs when compared to general enrollment. However, there appears to be a disproportionately low number of white students in the International Baccalaureate program. This result is interesting because it indicates that the racial makeup of the advanced programs differs to a significant degree. The Gifted and Talented and AP charts could indicate disparities in access to education due to cost barriers, physical barriers, or other obstacles. However, the data suggests that the boundaries to advanced education are not equal and the IB chart seems to indicate a greater proportion of racial and ethnic racial minority groups. This could perhaps be due to the IBO’s emphasis on fostering a global education.
 
 ```{r include = FALSE}
 source("scripts/advanced_education_demographics.R")
