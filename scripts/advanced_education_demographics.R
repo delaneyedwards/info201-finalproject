@@ -4,9 +4,9 @@ library("ggplot2")
 
 # Read CSV files
 enrollment <- read.csv("data/Enrollment.csv")
-GT <- read.csv("data/Gifted\ and\ Talented.csv")
-AP <- read_csv("data/Advanced\ Placement.csv")
-IB <- read_csv("data/International\ Baccalaureate.csv")
+gt <- read.csv("data/Gifted\ and\ Talented.csv")
+ap <- read.csv("data/Advanced\ Placement.csv")
+ib <- read.csv("data/International\ Baccalaureate.csv")
 
 # Creates a data frame containing the number of students of each race enrolled
 # in general enrollment.
@@ -66,7 +66,7 @@ enrollment_race <- enrollment %>%
 
 # Creates a data frame containing the number of students of each race enrolled
 # in Gifted and Talented programs.
-GT_race <- GT %>%
+gt_race <- gt %>%
   select(
     SCH_GTENR_HI_M,
     SCH_GTENR_HI_F,
@@ -123,7 +123,7 @@ GT_race <- GT %>%
 
 # Creates a data frame containing the number of students of each race enrolled
 # in the Advanced Placement program.
-AP_race <- AP %>%
+ap_race <- ap %>%
   select(
     SCH_APENR_HI_M,
     SCH_APENR_HI_F,
@@ -179,7 +179,7 @@ AP_race <- AP %>%
 
 # Creates a data frame containing the number of students of each race enrolled
 # in the International Baccalaureate.
-IB_race <- IB %>%
+ib_race <- ib %>%
   select(
     SCH_IBENR_HI_M,
     SCH_IBENR_HI_F,
@@ -235,7 +235,7 @@ IB_race <- IB %>%
   mutate(program = "IB")
 
 # Combines all data frames into a single data frame.
-all_race <- rbind(enrollment_race, GT_race, AP_race, IB_race)
+all_race <- rbind(enrollment_race, gt_race, ap_race, ib_race)
 
 # Creates a stacked bar chart of all enrollment data.
 graph <- ggplot(all_race) +

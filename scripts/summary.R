@@ -14,10 +14,10 @@ summary_info <- list()
 
 # Value 1
 # the state with the highest expenditure per student and its value
-state_highest_per_student_expend <- data_2015_extended %>%
+state_highest_student_expend <- data_2015_extended %>%
   filter(exp_per_student == max(exp_per_student, na.rm = T)) %>%
   select(STATE)
-state_highest_per_student_expend
+state_highest_student_expend
 highest_per_student_expend <- data_2015_extended %>%
   filter(exp_per_student == max(exp_per_student, na.rm = T)) %>%
   pull(exp_per_student)
@@ -26,10 +26,10 @@ summary_info$highest_exp_per_student <- highest_per_student_expend
 
 # value 2
 # the state with the lowest expenditure per student and its value
-state_lowest_per_student_expend <- data_2015_extended %>%
+state_lowest_student_expend <- data_2015_extended %>%
   filter(exp_per_student == min(exp_per_student, na.rm = T)) %>%
   select(STATE)
-state_lowest_per_student_expend
+state_lowest_student_expend
 lowest_per_student_expend <- data_2015_extended %>%
   filter(exp_per_student == min(exp_per_student, na.rm = T)) %>%
   pull(exp_per_student)
