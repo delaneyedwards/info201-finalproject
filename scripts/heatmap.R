@@ -93,7 +93,7 @@ state_shape_grade_4 <- map_data("state") %>%
 
 # this creates a heatmap of the Average 4th Grade Score per 4th grader for each 
 # state from the years 2012 to 2015
-ggplot(state_shape_grade_4) +
+grade_4_score <- ggplot(state_shape_grade_4) +
   geom_polygon(
     mapping = aes(x = long, y = lat, group = group, fill = grade_4),
     color = "white",
@@ -110,7 +110,7 @@ state_shape_grade_8 <- map_data("state") %>%
 
 # this creates a heatmap of the Average 8th Grade Score per 8th grader for each 
 # state from the years 2012 to 2015
-ggplot(state_shape_grade_8) +
+grade_8_score <- ggplot(state_shape_grade_8) +
   geom_polygon(
     mapping = aes(x = long, y = lat, group = group, fill = grade_8),
     color = "white",
@@ -120,7 +120,3 @@ ggplot(state_shape_grade_8) +
   scale_fill_continuous(low = "Yellow", high = "Red") +
   labs(fill = "Average 8th Grade Scores") +
   blank_theme
-
-the_max <- after_2000_refined %>%
-  filter(exp_per_student == max(exp_per_student)) %>%
-  pull(exp_per_student)

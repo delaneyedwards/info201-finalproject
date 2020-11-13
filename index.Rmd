@@ -4,6 +4,9 @@ author: Sahithi, Delaney, Kellen, Angela, and Brian
 date: November 12, 2020
 output: html_document
 ---
+This is our group's report about the factors that effect student performance.
+
+Table:
 ```{r include = FALSE}
 source("scripts/table.R")
 ```
@@ -14,12 +17,23 @@ table_states
 ```{r include = FALSE}
 source("scripts/heatmap.R")
 ```
-This is our group's report about the factors that effect student performance.
 
 Below is a heatmap of the Money Spent on Education per child for each state from the years 2012 to 2015:
 
 ```{r echo = FALSE}
 spent_per_child
+```
+
+Below is a heatmap of the Average 8th Grade Score per 8th grader for each state from the years 2012 to 2015:
+
+```{r echo = FALSE}
+grade_8_score
+```
+
+Below is a heatmap of the Average 4th Grade Score per 4th grader for each state from the years 2012 to 2015:
+
+```{r echo = FALSE}
+grade_4_score
 ```
 
 ```{r include = FALSE}
