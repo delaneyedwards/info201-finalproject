@@ -25,6 +25,10 @@ table_states
 source("scripts/heatmap.R")
 ```
 
+Below are 3 heatmaps showing average 4th and 8th graders scores and the amount of money spent per child for each state. 
+
+The purpose of including these three charts is to see if there's any effect when more or less money is spent on a student's education. As you can see the two grades we considered, 4th and 8th, performed similarly so we were able to see that there was no notable difference between the grades, which means both grades were affected similarly by the factors that lead to student success. Our first chart maps how much money each state spends per child and if you compare that map to either the 4th or 8th grade maps you can tell that there isn't much of a correlation between how much money is spent towards student education and their test scores.
+
 Below is a heatmap of the Money Spent on Education per child for each state from the years 2012 to 2015:
 
 ```{r echo = FALSE}
@@ -39,7 +43,6 @@ grade_8_score
 
 Below is a heatmap of the Average 4th Grade Score per 4th grader for each state from the years 2012 to 2015:
 
-The purpose of including these three charts is to see if there's any effect when more or less money is spent on a student's education. As you can see the two grades we considered, 4th and 8th, performed similarly so we were able to see that there was no notable difference between the grades, which means both grades were affected similarly by the factors that lead to student success. Our first chart maps how much money each state spends per child and if you compare that map to either the 4th or 8th grade maps you can tell that there isn't much of a correlation between how much money is spent towards student education and their test scores.
 
 ```{r echo = FALSE}
 grade_4_score
