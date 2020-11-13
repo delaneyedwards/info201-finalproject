@@ -78,7 +78,9 @@ states_table <- mutate(
          HAWAIIAN_NATIVE_PACIFIC_ISLANDER,
          TWO_OR_MORE_RACES
          ) 
-table_states <- kable(states_table)
+
+table_states <- kable(states_table) 
+ 
  
 
-
+                                      

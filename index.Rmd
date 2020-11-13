@@ -4,12 +4,19 @@ author: Sahithi, Delaney, Kellen, Angela, and Brian
 date: November 12, 2020
 output: html_document
 ---
-This is our group's report about the factors that effect student performance.
+This project is looking at how demographics and government funding can affect educational achievement of students in the U.S. Specifically, we are asking questions like “How does race correlate to students’ achievement on standardized tests?” and “What are the demographics of students in advanced classes?”.
+For our first analysis, our team decided to focus our time in finding a correlation between expenditure (how much money is put into school systems) and test scores. We focused on test scores of 8th graders in 2015. From our analysis we learned that the state with the highest instructional expenditure per student was New York with $15.94, and the state with the lowest was Arizona, with $4.07 per student. From there, we decided to delve further into the range of test scores between the different states. To our surprise, 8th grade students in Arizona scored three points higher than 8th graders in New York. We were also curious in understanding the discrepancy of the test scores between all of the states. We found that the highest scoring state for mathematics was Massachusetts with a score of 571 and the range of test scores between the states in mathematics in the US was 60 points.
 
 Table:
 ```{r include = FALSE}
 source("scripts/table.R")
 ```
+
+The table below portrays the average difference for 4th and 8th grades in 2015 between various racial groups in the NAEP reading exam scores in comparison to state averages. Positive numbers suggest scores higher than average, while negative scores indicate the opposite. From the table, we are able to see that white students on average tend to score higher than their peers on this exam, followed by Asians, with Blacks and American Indians/Alaska Natives scoring the lowest. While we are aware there could be multiple factors contributing to these results, it is clear there is a pattern in performance divided by race. 
+
+**Average Difference from State Average Scores on NAEP Reading Exam for 4th and 
+8th graders by Race in 2015**
+
 ```{r echo = FALSE}
 table_states
 ```
@@ -32,6 +39,8 @@ grade_8_score
 
 Below is a heatmap of the Average 4th Grade Score per 4th grader for each state from the years 2012 to 2015:
 
+The purpose of including these three charts is to see if there's any effect when more or less money is spent on a student's education. As you can see the two grades we considered, 4th and 8th, performed similarly so we were able to see that there was no notable difference between the grades, which means both grades were affected similarly by the factors that lead to student success. Our first chart maps how much money each state spends per child and if you compare that map to either the 4th or 8th grade maps you can tell that there isn't much of a correlation between how much money is spent towards student education and their test scores.
+
 ```{r echo = FALSE}
 grade_4_score
 ```
@@ -39,8 +48,8 @@ grade_4_score
 ```{r include = FALSE}
 source("scripts/racevscores.R")
 ```
-This chart is meant to show the relationship between a student's race and their performance on standardized math tests. We acknowledge that race is not the only factor that can affect this performance, but the disparities between races are clear. It shows that Asian students are the highest performing and that black/African American students score the lowest on the standardized math test. 
 
+This chart is meant to show the relationship between a student's race and their performance on standardized math tests. We acknowledge that race is not the only factor that can affect this performance, but the disparities between races are clear. It shows that Asian students are the highest performing and that black/African American students score the lowest on the standardized math test. 
 ```{r echo = FALSE}
 math_and_race
 ```
