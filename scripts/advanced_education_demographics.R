@@ -2,11 +2,17 @@ library("tidyr")
 library("dplyr")
 library("ggplot2")
 
+# Read CSV files
 enrollment <- read.csv("data/Enrollment.csv")
 GT <- read.csv("data/Gifted\ and\ Talented.csv")
 AP <- read_csv("data/Advanced\ Placement.csv")
 IB <- read_csv("data/International\ Baccalaureate.csv")
 
+<<<<<<< HEAD
+=======
+# Creates a data frame containing the number of students of each race enrolled
+# in general enrollment.
+>>>>>>> 5264f0a4389c1b044cfd9ea72ba4c2e33a1047ce
 enrollment_race <- enrollment %>%
   select(
     SCH_ENR_HI_M,
@@ -32,14 +38,22 @@ enrollment_race <- enrollment %>%
     "American Indian or Alaska Native" = SCH_ENR_AM_M + SCH_ENR_AM_F,
     .keep = "unused"
   ) %>%
-  mutate("Asian" = SCH_ENR_AS_M + SCH_ENR_AS_F, .keep = "unused") %>%
-  mutate("Native Hawaiian or Other Pacific Islander" = SCH_ENR_HP_M +
-    SCH_ENR_HP_F, .keep = "unused") %>%
+  mutate(
+    "Asian" = SCH_ENR_AS_M + SCH_ENR_AS_F,
+    .keep = "unused"
+  ) %>%
+  mutate(
+    "Native Hawaiian or Other Pacific Islander" = SCH_ENR_HP_M + SCH_ENR_HP_F,
+    .keep = "unused"
+  ) %>%
   mutate(
     "Black or African American" = SCH_ENR_BL_M + SCH_ENR_BL_F,
     .keep = "unused"
   ) %>%
-  mutate("White" = SCH_ENR_WH_M + SCH_ENR_WH_F, .keep = "unused") %>%
+  mutate(
+    "White" = SCH_ENR_WH_M + SCH_ENR_WH_F,
+    .keep = "unused"
+  ) %>%
   mutate(
     "Two or more races" = SCH_ENR_TR_M + SCH_ENR_TR_F,
     .keep = "unused"
@@ -53,16 +67,8 @@ enrollment_race <- enrollment %>%
   summarise(total = sum(count, na.rm = TRUE)) %>%
   mutate(program = "all_students")
 
-# enrollment_pie <- ggplot(enrollment_race, aes(x = "", y = total,
-# fill = race)) +
-#   geom_bar(stat = "identity", width = 1) +
-#   coord_polar("y", start = 0) +
-#   theme_void() +
-#   labs(title = "Student Enrollment", subtitle = "Proportion of students
-#   enrolled in all schools and justice facilities, preschool-grade 12") +
-#   geom_text(aes(label = paste(round(total / sum(total) * 100, 1), "%"),
-#   x = 1.4), position = position_stack(vjust = 0.5), size = 3)
-
+# Creates a data frame containing the number of students of each race enrolled
+# in Gifted and Talented programs.
 GT_race <- GT %>%
   select(
     SCH_GTENR_HI_M,
@@ -88,14 +94,23 @@ GT_race <- GT %>%
     "American Indian or Alaska Native" = SCH_GTENR_AM_M + SCH_GTENR_AM_F,
     .keep = "unused"
   ) %>%
-  mutate("Asian" = SCH_GTENR_AS_M + SCH_GTENR_AS_F, .keep = "unused") %>%
-  mutate("Native Hawaiian or Other Pacific Islander" = SCH_GTENR_HP_M +
-    SCH_GTENR_HP_F, .keep = "unused") %>%
+  mutate(
+    "Asian" = SCH_GTENR_AS_M + SCH_GTENR_AS_F,
+    .keep = "unused"
+  ) %>%
+  mutate(
+    "Native Hawaiian or Other Pacific Islander" = SCH_GTENR_HP_M +
+      SCH_GTENR_HP_F,
+    .keep = "unused"
+  ) %>%
   mutate(
     "Black or African American" = SCH_GTENR_BL_M + SCH_GTENR_BL_F,
     .keep = "unused"
   ) %>%
-  mutate("White" = SCH_GTENR_WH_M + SCH_GTENR_WH_F, .keep = "unused") %>%
+  mutate(
+    "White" = SCH_GTENR_WH_M + SCH_GTENR_WH_F,
+    .keep = "unused"
+  ) %>%
   mutate(
     "Two or more races" = SCH_GTENR_TR_M + SCH_GTENR_TR_F,
     .keep = "unused"
@@ -109,16 +124,8 @@ GT_race <- GT %>%
   summarise(total = sum(count, na.rm = TRUE)) %>%
   mutate(program = "GT")
 
-# GT_pie <- ggplot(GT_race, aes(x = "", y = total, fill = race)) +
-#   geom_bar(stat = "identity", width = 1) +
-#   coord_polar("y", start = 0) +
-#   theme_void() +
-#   labs(title = "Gifted and Talented Enrollment", subtitle = "Proportion of
-#   students enrolled in gifted and talented programs, preschool-grade 12") +
-#   geom_text(aes(label = paste(round(total / sum(total) * 100, 1), "%"),
-#   x = 1.4), position = position_stack(vjust = 0.5), size = 3)
-
-
+# Creates a data frame containing the number of students of each race enrolled
+# in the Advanced Placement program.
 AP_race <- AP %>%
   select(
     SCH_APENR_HI_M,
@@ -144,14 +151,22 @@ AP_race <- AP %>%
     "American Indian or Alaska Native" = SCH_APENR_AM_M + SCH_APENR_AM_F,
     .keep = "unused"
   ) %>%
-  mutate("Asian" = SCH_APENR_AS_M + SCH_APENR_AS_F, .keep = "unused") %>%
-  mutate("Native Hawaiian or Other Pacific Islander" = SCH_APENR_HP_M +
-    SCH_APENR_HP_F, .keep = "unused") %>%
+  mutate(
+    "Asian" = SCH_APENR_AS_M + SCH_APENR_AS_F,
+    .keep = "unused"
+  ) %>%
+  mutate(
+    "Native Hawaiian or Other Pacific Islander" = SCH_APENR_HP_M +
+      SCH_APENR_HP_F,
+    .keep = "unused"
+  ) %>%
   mutate(
     "Black or African American" = SCH_APENR_BL_M + SCH_APENR_BL_F,
     .keep = "unused"
   ) %>%
-  mutate("White" = SCH_APENR_WH_M + SCH_APENR_WH_F, .keep = "unused") %>%
+  mutate(
+    "White" = SCH_APENR_WH_M + SCH_APENR_WH_F, .keep = "unused"
+  ) %>%
   mutate(
     "Two or more races" = SCH_APENR_TR_M + SCH_APENR_TR_F,
     .keep = "unused"
@@ -165,16 +180,8 @@ AP_race <- AP %>%
   summarise(total = sum(count, na.rm = TRUE)) %>%
   mutate(program = "AP")
 
-
-# AP_pie <- ggplot(AP_race, aes(x = "", y = total, fill = race)) +
-#   geom_bar(stat = "identity", width = 1) +
-#   coord_polar("y", start = 0) +
-#   theme_void() +
-#   labs(title = "AP Enrollment", subtitle = "Proportion of students enrolled
-#   in an AP program, grade 9-12") +
-#   geom_text(aes(label = paste(round(total / sum(total) * 100, 1), "%"),
-#   x = 1.4), position = position_stack(vjust = 0.5), size = 3)
-
+# Creates a data frame containing the number of students of each race enrolled
+# in the International Baccalaureate.
 IB_race <- IB %>%
   select(
     SCH_IBENR_HI_M,
@@ -200,14 +207,23 @@ IB_race <- IB %>%
     "American Indian or Alaska Native" = SCH_IBENR_AM_M + SCH_IBENR_AM_F,
     .keep = "unused"
   ) %>%
-  mutate("Asian" = SCH_IBENR_AS_M + SCH_IBENR_AS_F, .keep = "unused") %>%
-  mutate("Native Hawaiian or Other Pacific Islander" = SCH_IBENR_HP_M +
-    SCH_IBENR_HP_F, .keep = "unused") %>%
+  mutate(
+    "Asian" = SCH_IBENR_AS_M + SCH_IBENR_AS_F,
+    .keep = "unused"
+  ) %>%
+  mutate(
+    "Native Hawaiian or Other Pacific Islander" = SCH_IBENR_HP_M +
+      SCH_IBENR_HP_F,
+    .keep = "unused"
+  ) %>%
   mutate(
     "Black or African American" = SCH_IBENR_BL_M + SCH_IBENR_BL_F,
     .keep = "unused"
   ) %>%
-  mutate("White" = SCH_IBENR_WH_M + SCH_IBENR_WH_F, .keep = "unused") %>%
+  mutate(
+    "White" = SCH_IBENR_WH_M + SCH_IBENR_WH_F,
+    .keep = "unused"
+  ) %>%
   mutate(
     "Two or more races" = SCH_IBENR_TR_M + SCH_IBENR_TR_F,
     .keep = "unused"
@@ -221,21 +237,15 @@ IB_race <- IB %>%
   summarise(total = sum(count, na.rm = TRUE)) %>%
   mutate(program = "IB")
 
-# IB_pie <- ggplot(IB_race, aes(x = "", y = total, fill = race)) +
-#   geom_bar(stat = "identity", width = 1) +
-#   coord_polar("y", start = 0) +
-#   theme_void() +
-#   labs(title = "International Baccalaureate (IB) Diploma Programme
-#   Enrollment", subtitle = "Proportion of students enrolled in an IB Diploma
-#   Programme, grade 9-12") +
-#   geom_text(aes(label = paste(round(total / sum(total) * 100, 1), "%"),
-#   x = 1.4), position = position_stack(vjust = 0.5), size = 3)
-
+# Combines all data frames into a single data frame.
 all_race <- rbind(enrollment_race, GT_race, AP_race, IB_race)
 
+# Creates a stacked bar chart of all enrollment data.
 graph <- ggplot(all_race) +
   geom_col(
     mapping = aes(x = program, y = total, fill = race), position = "fill"
   ) +
-  labs(x = "Program", y = "Proportion", fill = "Race", title = "Distribution
-  of Race Across Educational Programs")
+  labs(
+    x = "Program", y = "Proportion", fill = "Race",
+    title = "Distribution of Race Across Educational Programs"
+  )
