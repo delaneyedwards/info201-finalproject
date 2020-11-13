@@ -8,11 +8,8 @@ GT <- read.csv("data/Gifted\ and\ Talented.csv")
 AP <- read_csv("data/Advanced\ Placement.csv")
 IB <- read_csv("data/International\ Baccalaureate.csv")
 
-<<<<<<< HEAD
-=======
 # Creates a data frame containing the number of students of each race enrolled
 # in general enrollment.
->>>>>>> 5264f0a4389c1b044cfd9ea72ba4c2e33a1047ce
 enrollment_race <- enrollment %>%
   select(
     SCH_ENR_HI_M,
