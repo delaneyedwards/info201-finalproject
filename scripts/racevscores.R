@@ -31,7 +31,7 @@ math_race <- states_extended_data %>%
 
 
 math_and_race <- ggplot(data = math_race) +
-  geom_col(mapping = aes(x = Race, y = Score), fill = "darkolivegreen4", 
+  geom_col(mapping = aes(x = Race, y = Score), fill = "darkolivegreen4",
            width = 0.5, position = position_dodge(width = 1)) +
   labs(title = "Average NAEP Math Score by Race") +
   coord_flip()

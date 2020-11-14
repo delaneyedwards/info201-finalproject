@@ -18,8 +18,10 @@ summary_info <- list()
 # the state with the highest expenditure per student and its value
 state_highest_student_expend <- data_2015_extended %>%
   filter(exp_per_student == max(exp_per_student, na.rm = T)) %>%
-  select(STATE) 
+  select(STATE)
+state_highest_student_expend <- gsub("_", " ", state_highest_student_expend)
 state_highest_student_expend
+
 highest_per_student_expend <- data_2015_extended %>%
   filter(exp_per_student == max(exp_per_student, na.rm = T)) %>%
   pull(exp_per_student)

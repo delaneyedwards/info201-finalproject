@@ -4,7 +4,7 @@ author: Sahithi Yakkali, Delaney Edwards, Kellen McGibbon, Angela Yun, and Brian
 date: November 13, 2020
 output: html_document
 ---
-This project is looking at how demographics and government funding can affect educational achievement of students in the U.S. Specifically, we are asking questions like “How does race correlate to students’ achievement on standardized tests?” and “What are the demographics of students in advanced classes?”.
+This project is looking at how factors such as demographics and government funding can affect educational achievement of students in the U.S. Specifically, we are asking questions like “How does race correlate to students’ achievement on standardized tests?” and “What are the demographics of students in advanced classes?”.
 
 ```{r include = FALSE}
 source("scripts/summary.R")
