@@ -8,7 +8,7 @@ output: html_document
 source("scripts/table.R")
 ```
 ```{r include = FALSE}
-kable(states_table[])
+states_table
 ```
 
 ```{r include = FALSE}

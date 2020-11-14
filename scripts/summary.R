@@ -8,9 +8,9 @@ data_states <- read.csv("data/states_all.csv")
 
 states_refined <- data_states %>%
   filter(YEAR > 2011 & YEAR < 2016) %>%
-
-#list of the values in the summary information
-summary_info <- list()
+  
+  #list of the values in the summary information
+  summary_info <- list()
 
 after_2000_refined
 
@@ -64,6 +64,3 @@ diff_math_scores <- abs(state_high_test_scores - state_low_test_scores)
 #the perentage of race in that state
 
 #value 5
-
-
-
