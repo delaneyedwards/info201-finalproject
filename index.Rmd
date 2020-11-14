@@ -1,20 +1,42 @@
 ---
 title: "Factors that Effect Education"
-author: Sahithi, Delaney, Kellen, Angela, and Brian
-date: November 12, 2020
+author: Sahithi Yakkali, Delaney Edwards, Kellen McGibbon, Angela Yun, and Brian Park
+date: November 13, 2020
 output: html_document
 ---
+This project is looking at how factors such as demographics and government funding can affect educational achievement of students in the U.S. Specifically, we are asking questions like “How does race correlate to students’ achievement on standardized tests?” and “What are the demographics of students in advanced classes?”.
+
 ```{r include = FALSE}
+source("scripts/summary.R")
+```
+
+For our first analysis, our team decided to focus our time in finding a correlation between expenditure (how much money is put into school systems) and test scores. We focused on test scores of 8th graders in 2015. From our analysis we learned that the state with the highest instructional expenditure per student was `r state_highest_student_expend` with $`r formatC(highest_per_student_expend)`, and the state with the lowest was `r state_lowest_student_expend`, with $`r formatC(lowest_per_student_expend)` per student. From there, we decided to delve further into the range of test scores between the different states. To our surprise, 8th grade students in `r state_lowest_student_expend` scored `r summary_info$diff_high_low_expend_scores` points higher than 8th graders in `r state_highest_student_expend`. We were also curious in understanding the discrepancy of the test scores between all of the states. We found that the highest scoring state for mathematics was `r state_high_math` with a score of `r highest_test_scores` and the range of test scores between the states in mathematics in the US was `r summary_info$range_test_scores` points.
+
+Table:
+```{r include = FALSE}
+<<<<<<< HEAD
+states_table
+=======
 source("scripts/table.R")
 ```
-```{r include = FALSE}
-states_table
+
+The table below portrays the average difference for 4th and 8th grades in 2015 between various racial groups in the NAEP reading exam scores in comparison to state averages. Positive numbers suggest scores higher than average, while negative scores indicate the opposite. From the table, we are able to see that white students on average tend to score higher than their peers on this exam, followed by Asians, with Blacks and American Indians/Alaska Natives scoring the lowest. While we are aware there could be multiple factors contributing to these results, it is clear there is a pattern in performance divided by race. 
+
+**Average Difference from State Average Scores on NAEP Reading Exam for 4th and 
+8th graders by Race in 2015**
+
+```{r echo = FALSE}
+table_states
+>>>>>>> 299ebea268fb069e7b67aca32b0745d684883490
 ```
 
 ```{r include = FALSE}
 source("scripts/heatmap.R")
 ```
-This is our group's report about the factors that effect student performance.
+
+Below are 3 heatmaps showing average 4th and 8th graders scores and the amount of money spent per child for each state. 
+
+The purpose of including these three charts is to see if there's any effect when more or less money is spent on a student's education. As you can see the two grades we considered, 4th and 8th, performed similarly so we were able to see that there was no notable difference between the grades, which means both grades were affected similarly by the factors that lead to student success. Our first chart maps how much money each state spends per child and if you compare that map to either the 4th or 8th grade maps you can tell that there isn't much of a correlation between how much money is spent towards student education and their test scores.
 
 Below is a heatmap of the Money Spent on Education per child for each state from the years 2012 to 2015:
 
@@ -22,14 +44,29 @@ Below is a heatmap of the Money Spent on Education per child for each state from
 spent_per_child
 ```
 
+Below is a heatmap of the Average 8th Grade Score per 8th grader for each state from the years 2012 to 2015:
+
+```{r echo = FALSE}
+grade_8_score
+```
+
+Below is a heatmap of the Average 4th Grade Score per 4th grader for each state from the years 2012 to 2015:
+
+
+```{r echo = FALSE}
+grade_4_score
+```
+
 ```{r include = FALSE}
 source("scripts/racevscores.R")
 ```
-This chart is meant to show the relationship between a student's race and their performance on standardized math tests. We acknowledge that race is not the only factor that can affect this performance, but the disparities between races are clear. It shows that Asian students are the highest performing and that black/African American students score the lowest on the standardized math test. 
 
+This chart is meant to show the relationship between a student's race and their performance on standardized math tests. We acknowledge that race is not the only factor that can affect this performance, but the disparities between races are clear. It shows that Asian students are the highest performing and that black/African American students score the lowest on the standardized math test. 
 ```{r echo = FALSE}
 math_and_race
 ```
+
+The purpose of including this chart was to see if there is a disproportionate number of white students enrolled in advanced education programs in comparison to racial and ethnic racial minority groups. This first stacked bar chart shows the proportion of all students enrolled as a baseline. The following charts show the distribution of race among gifted and talented programs, the Advanced Placement (AP) program, and the International Baccalaureate (IB) program. According to the charts, there is a disproportionately high number of white students enrolled in gifted and talented programs and Advanced Placement programs when compared to general enrollment. However, there appears to be a disproportionately low number of white students in the International Baccalaureate program. This result is interesting because it indicates that the racial makeup of the advanced programs differs to a significant degree. The Gifted and Talented and AP charts could indicate disparities in access to education due to cost barriers, physical barriers, or other obstacles. However, the data suggests that the boundaries to advanced education are not equal and the IB chart seems to indicate a greater proportion of racial and ethnic racial minority groups. This could perhaps be due to the IBO’s emphasis on fostering a global education.
 
 ```{r include = FALSE}
 source("scripts/advanced_education_demographics.R")
