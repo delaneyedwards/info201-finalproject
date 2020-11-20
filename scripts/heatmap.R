@@ -22,9 +22,12 @@ after_2000_refined <- data_states %>%
   ) %>%
   group_by(STATE) %>%
   mutate(expenditure = sum(mean_inst_exp + mean_ss_exp, na.rm = TRUE)) %>%
-  mutate(exp_per_student = expenditure / mean_enrolled)
-after_2000_refined$STATE <- tolower(after_2000_refined$STATE)
-after_2000_refined$STATE <- gsub("_", " ", after_2000_refined$STATE)
+  mutate(exp_per_student = expenditure / mean_enrolled) %>%
+  rename(state = STATE)
+
+
+after_2000_refined$state <- tolower(after_2000_refined$state)
+after_2000_refined$state <- gsub("_", " ", after_2000_refined$state)
 library("maps")
 blank_theme <- theme_bw() +
   theme(
@@ -85,9 +88,11 @@ math_scores_refined <- data_states %>%
   mutate(
     grade_4 = mean(mean_math_4 + mean_reading_4, na.rm = TRUE),
     grade_8 = mean(mean_math_8 + mean_reading_8, na.rm = TRUE)
-  )
-math_scores_refined$STATE <- tolower(math_scores_refined$STATE)
-math_scores_refined$STATE <- gsub("_", " ", math_scores_refined$STATE)
+  ) %>%
+  rename(state = STATE)
+
+math_scores_refined$state <- tolower(math_scores_refined$state)
+math_scores_refined$state <- gsub("_", " ", math_scores_refined$state)
 state_shape_grade_4 <- map_data("state") %>%
   rename(STATE = region) %>%
   left_join(math_scores_refined, by = "STATE")
