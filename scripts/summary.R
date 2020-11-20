@@ -51,20 +51,23 @@ scores_refined_2015 <- data_states %>%
   mutate(
     grade_4 = mean(mean_math_4 + mean_reading_4, na.rm = TRUE),
     grade_8 = mean(mean_math_8 + mean_reading_8, na.rm = TRUE)
-  )
-scores_refined_2015$STATE <- tolower(scores_refined_2015$STATE)
-scores_refined_2015$STATE <- gsub("_", " ", scores_refined_2015$STATE)
+  ) %>%
+  rename(state = STATE)
+
+
+scores_refined_2015$state <- tolower(scores_refined_2015$state)
+scores_refined_2015$state <- gsub("_", " ", scores_refined_2015$state)
 
 # value 3
 # difference in ang 8th grade test scores between the state with highest
 # total expenditure
 # vs lowest total expenditure
 ny_avg_scores_8 <- scores_refined_2015 %>%
-  filter(STATE == "new york") %>%
+  filter(state == "new york") %>%
   pull(grade_8)
 ny_avg_scores_8
 arizona_avg_scores_8 <- scores_refined_2015 %>%
-  filter(STATE == "arizona") %>%
+  filter(state == "arizona") %>%
   pull(grade_8)
 arizona_avg_scores_8
 summary_info$diff_high_low_expend_scores <- abs(
@@ -82,12 +85,12 @@ state_high_math
 # the differences in the test scores between highest scoring state and
 # lowest scoring state
 highest_test_scores <- scores_refined_2015 %>%
-  filter(STATE == "massachusetts") %>%
+  filter(state == "massachusetts") %>%
   pull(grade_8)
 highest_test_scores
 summary_info$state_highest_score <- highest_test_scores
 lowest_test_scores <- scores_refined_2015 %>%
-  filter(STATE == "district of columbia") %>%
+  filter(state == "district of columbia") %>%
   pull(grade_8)
 lowest_test_scores
 diff_math_scores <- abs(highest_test_scores - lowest_test_scores)
