@@ -1,7 +1,9 @@
 library("tidyverse")
 library("ggplot2")
 library("mapproj")
+
 data_states <- read.csv("data/states_all.csv")
+
 # this data set will create a table with the means of the expenditures, students
 # enrolled, and expenditure per state for the years 2012 - 2015
 after_2000_refined <- data_states %>%

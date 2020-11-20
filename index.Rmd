@@ -4,8 +4,13 @@ author: Sahithi Yakkali, Delaney Edwards, Kellen McGibbon, Angela Yun, and Brian
 date: November 13, 2020
 output: html_document
 ---
-This project is looking at how demographics and government funding can affect educational achievement of students in the U.S. Specifically, we are asking questions like “How does race correlate to students’ achievement on standardized tests?” and “What are the demographics of students in advanced classes?”.
-For our first analysis, our team decided to focus our time in finding a correlation between expenditure (how much money is put into school systems) and test scores. We focused on test scores of 8th graders in 2015. From our analysis we learned that the state with the highest instructional expenditure per student was New York with $15.94, and the state with the lowest was Arizona, with $4.07 per student. From there, we decided to delve further into the range of test scores between the different states. To our surprise, 8th grade students in Arizona scored three points higher than 8th graders in New York. We were also curious in understanding the discrepancy of the test scores between all of the states. We found that the highest scoring state for mathematics was Massachusetts with a score of 571 and the range of test scores between the states in mathematics in the US was 60 points.
+This project is looking at how factors such as demographics and government funding can affect educational achievement of students in the U.S. Specifically, we are asking questions like “How does race correlate to students’ achievement on standardized tests?” and “What are the demographics of students in advanced classes?”.
+
+```{r include = FALSE}
+source("scripts/summary.R")
+```
+
+For our first analysis, our team decided to focus our time in finding a correlation between expenditure (how much money is put into school systems) and test scores. We focused on test scores of 8th graders in 2015. From our analysis we learned that the state with the highest instructional expenditure per student was `r state_highest_student_expend` with $`r formatC(highest_per_student_expend)`, and the state with the lowest was `r state_lowest_student_expend`, with $`r formatC(lowest_per_student_expend)` per student. From there, we decided to delve further into the range of test scores between the different states. To our surprise, 8th grade students in `r state_lowest_student_expend` scored `r summary_info$diff_high_low_expend_scores` points higher than 8th graders in `r state_highest_student_expend`. We were also curious in understanding the discrepancy of the test scores between all of the states. We found that the highest scoring state for mathematics was `r state_high_math` with a score of `r highest_test_scores` and the range of test scores between the states in mathematics in the US was `r summary_info$range_test_scores` points.
 
 Table:
 ```{r include = FALSE}

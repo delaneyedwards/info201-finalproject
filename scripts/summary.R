@@ -8,6 +8,8 @@ data_2015 <- data_states %>%
 data_2015_extended <- data_2015 %>%
   mutate(exp_per_student = INSTRUCTION_EXPENDITURE / ENROLL) %>%
   mutate(avg_test_score_8 = (AVG_MATH_8_SCORE + AVG_READING_8_SCORE) / 2)
+data_2015_extended[[2]] <- str_to_title(data_2015_extended[[2]])
+data_2015[[2]] <- str_to_title(data_2015[[2]])
 
 # list of the values in the summary information
 summary_info <- list()
@@ -17,7 +19,9 @@ summary_info <- list()
 state_highest_student_expend <- data_2015_extended %>%
   filter(exp_per_student == max(exp_per_student, na.rm = T)) %>%
   select(STATE)
+state_highest_student_expend <- gsub("_", " ", state_highest_student_expend)
 state_highest_student_expend
+
 highest_per_student_expend <- data_2015_extended %>%
   filter(exp_per_student == max(exp_per_student, na.rm = T)) %>%
   pull(exp_per_student)
