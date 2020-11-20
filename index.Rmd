@@ -30,6 +30,8 @@ table_states
 source("scripts/heatmap.R")
 ```
 
+## Chart 1: Heatmmap
+
 Below are 3 heatmaps showing average 4th and 8th graders scores and the amount of money spent per child for each state. 
 
 The purpose of including these three charts is to see if there's any effect when more or less money is spent on a student's education. As you can see the two grades we considered, 4th and 8th, performed similarly so we were able to see that there was no notable difference between the grades, which means both grades were affected similarly by the factors that lead to student success. Our first chart maps how much money each state spends per child and if you compare that map to either the 4th or 8th grade maps you can tell that there isn't much of a correlation between how much money is spent towards student education and their test scores.
@@ -57,10 +59,14 @@ grade_4_score
 source("scripts/racevscores.R")
 ```
 
+## Chart 2: Bar Chart
+
 This chart is meant to show the relationship between a student's race and their performance on standardized math tests. We acknowledge that race is not the only factor that can affect this performance, but the disparities between races are clear. It shows that Asian students are the highest performing and that black/African American students score the lowest on the standardized math test. 
 ```{r echo = FALSE}
 math_and_race
 ```
+
+## Chart 3: Stacked Bar Chart
 
 The purpose of including this chart was to see if there is a disproportionate number of white students enrolled in advanced education programs in comparison to racial and ethnic racial minority groups. This first stacked bar chart shows the proportion of all students enrolled as a baseline. The following charts show the distribution of race among gifted and talented programs, the Advanced Placement (AP) program, and the International Baccalaureate (IB) program. According to the charts, there is a disproportionately high number of white students enrolled in gifted and talented programs and Advanced Placement programs when compared to general enrollment. However, there appears to be a disproportionately low number of white students in the International Baccalaureate program. This result is interesting because it indicates that the racial makeup of the advanced programs differs to a significant degree. The Gifted and Talented and AP charts could indicate disparities in access to education due to cost barriers, physical barriers, or other obstacles. However, the data suggests that the boundaries to advanced education are not equal and the IB chart seems to indicate a greater proportion of racial and ethnic racial minority groups. This could perhaps be due to the IBO’s emphasis on fostering a global education.
 
