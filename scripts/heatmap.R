@@ -41,8 +41,8 @@ blank_theme <- theme_bw() +
     panel.border = element_blank()
   )
 state_shape <- map_data("state") %>%
-  rename(STATE = region) %>%
-  left_join(after_2000_refined, by = "STATE")
+  rename(state = region) %>%
+  left_join(after_2000_refined, by = "state")
 # this creates a heatmap of the Money Spent on Education for each state from
 # the years 2012 to 2015
 ggplot(state_shape) +
@@ -93,9 +93,10 @@ math_scores_refined <- data_states %>%
 
 math_scores_refined$state <- tolower(math_scores_refined$state)
 math_scores_refined$state <- gsub("_", " ", math_scores_refined$state)
+
 state_shape_grade_4 <- map_data("state") %>%
-  rename(STATE = region) %>%
-  left_join(math_scores_refined, by = "STATE")
+  rename(state = region) %>%
+  left_join(math_scores_refined, by = "state")
 # this creates a heatmap of the Average 4th Grade Score per 4th grader for each
 # state from the years 2012 to 2015
 grade_4_score <- ggplot(state_shape_grade_4) +
@@ -110,8 +111,8 @@ grade_4_score <- ggplot(state_shape_grade_4) +
   blank_theme +
   labs(title = "Average 4th Grade Scores by State")
 state_shape_grade_8 <- map_data("state") %>%
-  rename(STATE = region) %>%
-  left_join(math_scores_refined, by = "STATE")
+  rename(state = region) %>%
+  left_join(math_scores_refined, by = "state")
 # this creates a heatmap of the Average 8th Grade Score per 8th grader for each
 # state from the years 2012 to 2015
 grade_8_score <- ggplot(state_shape_grade_8) +
