@@ -14,27 +14,23 @@ For our first analysis, our team decided to focus our time in finding a correlat
 
 Table:
 ```{r include = FALSE}
-<<<<<<< HEAD
-states_table
-=======
 source("scripts/table.R")
 ```
 
-The table below portrays the average difference for 4th and 8th grades in 2015 between various racial groups in the NAEP reading exam scores in comparison to state averages. Positive numbers suggest scores higher than average, while negative scores indicate the opposite. From the table, we are able to see that white students on average tend to score higher than their peers on this exam, followed by Asians, with Blacks and American Indians/Alaska Natives scoring the lowest. While we are aware there could be multiple factors contributing to these results, it is clear there is a pattern in performance divided by race. 
+The table below portrays the average difference for 4th and 8th grades in 2015 between various racial groups in the NAEP reading exam scores in comparison to state averages. Positive numbers suggest scores higher than average, while negative scores indicate the opposite. From the table, we are able to see that white students on average tend to score higher than their peers on this exam, followed by Asians, with Blacks and American Indians/Alaska Natives scoring the lowest. While we are aware there could be multiple factors contributing to these results, it is clear there is a pattern in performance divided by race.
 
-**Average Difference from State Average Scores on NAEP Reading Exam for 4th and 
+**Average Difference from State Average Scores on NAEP Reading Exam for 4th and
 8th graders by Race in 2015**
 
 ```{r echo = FALSE}
 table_states
->>>>>>> 299ebea268fb069e7b67aca32b0745d684883490
 ```
 
 ```{r include = FALSE}
 source("scripts/heatmap.R")
 ```
 
-Below are 3 heatmaps showing average 4th and 8th graders scores and the amount of money spent per child for each state. 
+Below are 3 heatmaps showing average 4th and 8th graders scores and the amount of money spent per child for each state.
 
 The purpose of including these three charts is to see if there's any effect when more or less money is spent on a student's education. As you can see the two grades we considered, 4th and 8th, performed similarly so we were able to see that there was no notable difference between the grades, which means both grades were affected similarly by the factors that lead to student success. Our first chart maps how much money each state spends per child and if you compare that map to either the 4th or 8th grade maps you can tell that there isn't much of a correlation between how much money is spent towards student education and their test scores.
 
@@ -61,7 +57,7 @@ grade_4_score
 source("scripts/racevscores.R")
 ```
 
-This chart is meant to show the relationship between a student's race and their performance on standardized math tests. We acknowledge that race is not the only factor that can affect this performance, but the disparities between races are clear. It shows that Asian students are the highest performing and that black/African American students score the lowest on the standardized math test. 
+This chart is meant to show the relationship between a student's race and their performance on standardized math tests. We acknowledge that race is not the only factor that can affect this performance, but the disparities between races are clear. It shows that Asian students are the highest performing and that black/African American students score the lowest on the standardized math test.
 ```{r echo = FALSE}
 math_and_race
 ```

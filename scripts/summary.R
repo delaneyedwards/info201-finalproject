@@ -1,13 +1,6 @@
 library("tidyverse")
 library("dplyr")
 
-<<<<<<< HEAD
-states_refined <- data_states %>%
-  filter(YEAR > 2011 & YEAR < 2016) %>%
-  
-  #list of the values in the summary information
-  summary_info <- list()
-=======
 data_states_extended <- read.csv("data/states_all_extended.csv")
 data_states <- read.csv("data/states_all.csv")
 data_2015 <- data_states %>%
@@ -20,7 +13,6 @@ data_2015[[2]] <- str_to_title(data_2015[[2]])
 
 # list of the values in the summary information
 summary_info <- list()
->>>>>>> 299ebea268fb069e7b67aca32b0745d684883490
 
 # Value 1
 # the state with the highest expenditure per student and its value
@@ -73,26 +65,6 @@ scores_refined_2015$STATE <- gsub("_", " ", scores_refined_2015$STATE)
 # vs lowest total expenditure
 ny_avg_scores_8 <- scores_refined_2015 %>%
   filter(STATE == "new york") %>%
-<<<<<<< HEAD
-  pull(mean_math_8)
-state_high_test_scores
-
-state_low_test_scores <- math_scores_refined %>%
-  filter(STATE == "idaho") %>%
-  pull(mean_math_8)
-state_high_test_scores
-
-diff_math_scores <- abs(state_high_test_scores - state_low_test_scores)
-
-
-#state with the highest 8th grade test scores
-
-
-
-#the perentage of race in that state
-
-#value 5
-=======
   pull(grade_8)
 ny_avg_scores_8
 arizona_avg_scores_8 <- scores_refined_2015 %>%
@@ -125,4 +97,3 @@ lowest_test_scores
 diff_math_scores <- abs(highest_test_scores - lowest_test_scores)
 diff_math_scores
 summary_info$range_test_scores <- abs(highest_test_scores - lowest_test_scores)
->>>>>>> 299ebea268fb069e7b67aca32b0745d684883490
