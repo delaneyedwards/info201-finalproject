@@ -27,10 +27,15 @@ stacked_bar_chart_page <- tabPanel(
   titlePanel("Distribution of Race Across Educational Programs")
 )
 
+summary_page <- tabPanel(
+  "Summary Takeaways"
+)
+
 ui <- navbarPage(
   "Factors that Affect Education ",
   intro_page,
   bar_chart_page,
   heatmap_page,
-  stacked_bar_chart_page
+  stacked_bar_chart_page,
+  summary_page
 )
