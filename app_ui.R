@@ -19,7 +19,56 @@ bar_chart_page <- tabPanel(
 
 heatmap_page <- tabPanel(
   "Heatmap",
-  titlePanel("Average Spendings and NAEP Scores By State")
+  titlePanel("Average Spendings and NAEP Scores By State"),
+  sidebarLayout(
+    sidebarPanel(
+      h4("Manipulate the values below and view different data
+               on the maps to the right."),
+      fill <- selectInput(
+        "fill",
+        label = "Choose the Grade You Want to Evaluate",
+        choices = list(
+          "4th Grade" = "grade_4",
+          "8th Grade" = "grade_8"
+        ),
+        selected = "grade_4"
+      ),
+      color_high <- selectInput(
+        "color_high",
+        label = "Choose the High Color You Would Like to View the Maps In",
+        choices = list(
+          "Red" = "red",
+          "Orange" = "orange",
+          "Yellow" = "yellow",
+          "Blue" = "blue",
+          "Green" = "green",
+          "Purple" = "purple",
+          "White" = "white",
+          "Black" = "black"
+        ),
+        selected = "red"
+      ),
+      color_low <- selectInput(
+        "color_low",
+        label = "Choose the Low Color You Would Like to View the Maps In",
+        choices = list(
+          "Red" = "red",
+          "Orange" = "orange",
+          "Yellow" = "yellow",
+          "Blue" = "blue",
+          "Green" = "green",
+          "Purple" = "purple",
+          "White" = "white",
+          "Black" = "black"
+        ),
+        selected = "yellow"
+      )
+    ),
+    mainPanel(
+      plotlyOutput("moneymap"),
+      plotlyOutput("scores")
+    )
+  )
 )
 
 stacked_bar_chart_page <- tabPanel(
