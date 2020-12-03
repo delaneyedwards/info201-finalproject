@@ -75,6 +75,10 @@ state_shape_grade <- map_data("state") %>%
   rename(state = region) %>%
   left_join(math_scores_refined, by = "state")
 
+translate <- list(
+  "grade_4" = "4th Grade",
+  "grade_8" = "8th Grade"
+)
 
 server <- function(input, output) {
   # this creates a heatmap of the Money Spent on Education per child for each
@@ -96,7 +100,7 @@ server <- function(input, output) {
   # this creates a heatmap of the Average Grade Score per student in grade for
   # each state from the years 2012 to 2015
   output$scores <- renderPlotly({
-    title <- paste0("Average Scores by State: ", input$fill)
+    title <- paste0("Average Scores by State: ", translate[[input$fill]])
     p <- ggplot(state_shape_grade) +
       geom_polygon(
         mapping = aes_string(x = "long", y = "lat", group = "group", fill = input$fill),
@@ -105,7 +109,7 @@ server <- function(input, output) {
       ) +
       coord_map() +
       scale_fill_continuous(low = input$color_low, high = input$color_high) +
-      labs(fill = input$fill, title = title) +
+      labs(fill = translate[[input$fill]], title = title) +
       blank_theme 
     p
   })
