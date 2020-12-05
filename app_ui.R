@@ -102,7 +102,27 @@ heatmap_page <- tabPanel(
 
 stacked_bar_chart_page <- tabPanel(
   "Stacked Bar Chart",
-  titlePanel("Distribution of Race Across Educational Programs")
+  titlePanel("Distribution of Race Across Educational Programs"),
+  sidebarLayout(
+    sidebarPanel(
+      h4("Choose an educational program to view the distribution of race."),
+      fill <- selectInput(
+        inputId = "program",
+        label = "Choose the program You Want to Evaluate",
+        choices = list(
+          "All Students" = "all_students",
+          "Advanced Placement" = "AP",
+          "Gifted and Talented" = "GT",
+          "International Baccalaureate" = "IB"
+        ),
+        selected = "all_students"
+      ),
+    ),
+    mainPanel(
+      plotlyOutput("distribution")
+    )
+  )
+  
 )
 
 summary_page <- tabPanel(
