@@ -3,6 +3,7 @@ library(ggplot2)
 library(dplyr)
 library(maps)
 library(tidyr)
+library(stringr)
 
 data_states <- read.csv("data/states_all.csv")
 states_extended_data <- read.csv("data/states_all_extended.csv")
@@ -11,6 +12,54 @@ gt <- read.csv("data/Gifted\ and\ Talented.csv")
 ap <- read.csv("data/Advanced\ Placement.csv")
 ib <- read.csv("data/International\ Baccalaureate.csv")
 
+#Bar chart for race versus test scores
+race_score_data <- states_extended_data %>%
+  filter(YEAR > 2011 & YEAR < 2016) %>%
+  select(
+    G08_WH_A_MATHEMATICS,
+    G08_BL_A_MATHEMATICS,
+    G08_HI_A_MATHEMATICS,
+    G08_AS_A_MATHEMATICS,
+    G08_AM_A_MATHEMATICS,
+    G08_HP_A_MATHEMATICS,
+    G08_TR_A_MATHEMATICS,
+    G04_WH_A_MATHEMATICS,
+    G04_BL_A_MATHEMATICS,
+    G04_HI_A_MATHEMATICS,
+    G04_AS_A_MATHEMATICS,
+    G04_AM_A_MATHEMATICS,
+    G04_HP_A_MATHEMATICS,
+    G04_TR_A_MATHEMATICS,
+    G08_WH_A_READING,
+    G08_BL_A_READING,
+    G08_HI_A_READING,
+    G08_AS_A_READING,
+    G08_AM_A_READING,
+    G08_HP_A_READING,
+    G08_TR_A_READING,
+    G04_WH_A_READING,
+    G04_BL_A_READING,
+    G04_HI_A_READING,
+    G04_AS_A_READING,
+    G04_AM_A_READING,
+    G04_HP_A_READING,
+    G04_TR_A_READING
+  ) %>% 
+  gather(key = "grade", value = "Score") %>% 
+  separate("grade", c("Grade", "Race", "Average", "Test_Type"), "_") %>% 
+  group_by(Race, Test_Type, Grade) %>%
+  summarize(Score = mean(Score, na.rm = T)) %>% 
+  mutate(Race=recode(Race, 
+                    WH = "White",
+                    BL = "Black/African American", 
+                    HI = "Latinx",
+                    AS = "Asian", 
+                    AM = "American Indian/Alaska Native", 
+                    HP = "Hawaiian Native/Pacific Islander", 
+                    TR = "Two or More Races"))
+
+
+#Maps data and creation
 after_2000_refined <- data_states %>%
   filter(YEAR > 2011 & YEAR < 2016) %>%
   select(
@@ -366,6 +415,19 @@ server <- function(input, output) {
       )
     
     ggplotly(graph)
+  })
+  
+  output$barchart <- renderPlotly({
+    final_data <- race_score_data %>% 
+      filter(Test_Type == toupper(input$score_type),
+             Grade == input$grade_level,
+             Race %in% input$race_input)
+    
+    score_and_race <- ggplot(data = final_data) +
+    geom_col(mapping = aes(x = Race, y = Score), fill = "darkolivegreen4",
+             width = 0.5, position = position_dodge(width = 1)) +
+    labs(title = "Average NAEP Score by Race") +
+    coord_flip()
   })
 
 }

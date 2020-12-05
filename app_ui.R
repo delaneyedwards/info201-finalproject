@@ -43,7 +43,41 @@ intro_page <- tabPanel(
 
 bar_chart_page <- tabPanel(
   "Bar Chart",
-  titlePanel("Average NAEP Math Scores by Race"),
+  titlePanel("Average NAEP Scores by Race"),
+  sidebarLayout(
+    sidebarPanel(
+      score_type <- radioButtons(
+        "score_type",
+        label = "Choose the Type of NAEP Test Scores You Would like to View",
+        choices = list("Reading", "Mathematics")
+      ),
+      grade_level <- radioButtons(
+        "grade_level",
+        label = "Choose the Grade Level You Would like to View",
+        choices = list("4th Grade" = "G04", 
+                       "8th Grade" = "G08")
+      ),
+      race_input <- checkboxGroupInput("race_input",
+                                       "Select the Races You Would like to View",
+                                       c("White",
+                                         "Black/African American",
+                                         "Latinx",
+                                         "Asian", 
+                                         "American Indian/Alaska Native", 
+                                         "Hawaiian Native/Pacific Islander", 
+                                         "Two or More Races"),
+                                       selected = c("White",
+                                            "Black/African American",
+                                            "Latinx",
+                                            "Asian", 
+                                            "American Indian/Alaska Native", 
+                                            "Hawaiian Native/Pacific Islander", 
+                                            "Two or More Races"))
+    ),
+    mainPanel(
+      plotlyOutput("barchart")
+    )
+  )
 ) 
 
 heatmap_page <- tabPanel(
