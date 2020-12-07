@@ -41,7 +41,31 @@ intro_page <- tabPanel(
   etc.")
 )
 
-bar_chart_page <- tabPanel(
+summary_page <- tabPanel(
+  "Major Takeaways",
+  p("Through our analysis of datasets detailing statistics of state education 
+  spendings, average student scores on national standardized exams, and their 
+  demographic information, we discovered patterns of correlation, mostly between
+  race and academic performance."),
+  p("In our bar chart for average NAEP scores, Asians and Whites were found to 
+  score highest regardless of test subject and grade level."),
+  p("Our heatmap detailing the relationship between state spendings and NAEP 
+  scores did not find much correlation between these two variables. States with
+  a higher average amount spent per student did not match with higher scores 
+  almost anywhere in America."), 
+  p("Through our stacked bar chart displaying the distribution of race across 
+  educational programs, over 50% of the AP (Advanced Placement) and Gifted and
+  Talented programs are consisted of white students, as well as nearly half of
+  the International Baccalaureate program. Approximately 25% of students in AP
+  and IB are also Hispanic/Latino."),
+  p("Our major takeaways include believing that spendings are not the biggest
+    factors in creating a successful academic environment. Something else we
+    found especially highlighted was the uneven distribution of races across
+    educational programs, likely a major contributor to the outcome of average
+    standardized test scores.")
+)
+
+  bar_chart_page <- tabPanel(
   "Bar Chart",
   titlePanel("Average NAEP Scores by Race"),
   sidebarLayout(
@@ -157,10 +181,6 @@ stacked_bar_chart_page <- tabPanel(
     )
   )
   
-)
-
-summary_page <- tabPanel(
-  "Summary Takeaways"
 )
 
 ui <- navbarPage(
