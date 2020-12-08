@@ -48,21 +48,29 @@ summary_page <- tabPanel(
   demographic information, we discovered patterns of correlation, mostly between
   race and academic performance."),
   p("In our bar chart for average NAEP scores, Asians and Whites were found to 
-  score highest regardless of test subject and grade level."),
+  score highest regardless of test subject and grade level. Blacks/African
+  Americans scored the lowest. While we acknowledge that race is not the only 
+  factor that can affect this performance, the disparities between races are
+  clear."),
   p("Our heatmap detailing the relationship between state spendings and NAEP 
   scores did not find much correlation between these two variables. States with
   a higher average amount spent per student did not match with higher scores 
   almost anywhere in America."), 
   p("Through our stacked bar chart displaying the distribution of race across 
   educational programs, over 50% of the AP (Advanced Placement) and Gifted and
-  Talented programs are consisted of white students, as well as nearly half of
-  the International Baccalaureate program. Approximately 25% of students in AP
-  and IB are also Hispanic/Latino."),
+  Talented programs are consisted of white students, which is disproportionately
+  high compared to total enrollment numbers. All other race groups except 
+  Asians and two or more races display the opposite, with enrollment in all
+  advanced education programs lower than total enrollment. To us, this suggests
+  boundaries to advanced education are not equal."),
   p("Our major takeaways include believing that spendings are not the biggest
-    factors in creating a successful academic environment. Something else we
-    found especially highlighted was the uneven distribution of races across
-    educational programs, likely a major contributor to the outcome of average
-    standardized test scores.")
+  factors in creating a successful academic environment. Something else we
+  found especially highlighted was the uneven distribution of races across
+  educational programs, likely a major contributor to the outcome of average
+  standardized test scores. National average scores also detail obvious 
+  differences. Overall, we feel that while money is not a key factor in student
+  success, the barriers faced by students of different backgrounds is something
+  America has yet to equalize.")
 )
 
   bar_chart_page <- tabPanel(
