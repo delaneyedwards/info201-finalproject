@@ -43,6 +43,7 @@ intro_page <- tabPanel(
 
 summary_page <- tabPanel(
   "Major Takeaways",
+  h1("Summary and Major Takeaways"),
   p("Through our analysis of datasets detailing statistics of state education 
   spendings, average student scores on national standardized exams, and their 
   demographic information, we discovered patterns of correlation, mostly between
