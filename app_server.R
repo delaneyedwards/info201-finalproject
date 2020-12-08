@@ -12,7 +12,7 @@ gt <- read.csv("data/Gifted\ and\ Talented.csv")
 ap <- read.csv("data/Advanced\ Placement.csv")
 ib <- read.csv("data/International\ Baccalaureate.csv")
 
-#Bar chart for race versus test scores
+# Bar chart for race versus test scores
 race_score_data <- states_extended_data %>%
   filter(YEAR > 2011 & YEAR < 2016) %>%
   select(
@@ -44,22 +44,23 @@ race_score_data <- states_extended_data %>%
     G04_AM_A_READING,
     G04_HP_A_READING,
     G04_TR_A_READING
-  ) %>% 
-  gather(key = "grade", value = "Score") %>% 
-  separate("grade", c("Grade", "Race", "Average", "Test_Type"), "_") %>% 
+  ) %>%
+  gather(key = "grade", value = "Score") %>%
+  separate("grade", c("Grade", "Race", "Average", "Test_Type"), "_") %>%
   group_by(Race, Test_Type, Grade) %>%
-  summarize(Score = mean(Score, na.rm = T)) %>% 
-  mutate(Race=recode(Race, 
-                    WH = "White",
-                    BL = "Black/African American", 
-                    HI = "Latinx",
-                    AS = "Asian", 
-                    AM = "American Indian/Alaska Native", 
-                    HP = "Hawaiian Native/Pacific Islander", 
-                    TR = "Two or More Races"))
+  summarize(Score = mean(Score, na.rm = T)) %>%
+  mutate(Race = recode(Race,
+    WH = "White",
+    BL = "Black/African American",
+    HI = "Latinx",
+    AS = "Asian",
+    AM = "American Indian/Alaska Native",
+    HP = "Hawaiian Native/Pacific Islander",
+    TR = "Two or More Races"
+  ))
 
 
-#Maps data and creation
+# Maps data and creation
 after_2000_refined <- data_states %>%
   filter(YEAR > 2011 & YEAR < 2016) %>%
   select(
@@ -370,7 +371,8 @@ server <- function(input, output) {
     title <- paste0("Average Amount of Money Spent Per Student by State")
     p <- ggplot(state_shape) +
       geom_polygon(
-        mapping = aes_string(x = "long", y = "lat", group = "group", fill = "exp_per_student"),
+        mapping = aes_string(x = "long", y = "lat", group = "group", fill =
+                               "exp_per_student"),
         color = "white",
         size = .1
       ) +
@@ -386,24 +388,25 @@ server <- function(input, output) {
     title <- paste0("Average Scores by State: ", translate[[input$fill]])
     p <- ggplot(state_shape_grade) +
       geom_polygon(
-        mapping = aes_string(x = "long", y = "lat", group = "group", fill = input$fill),
+        mapping = aes_string(x = "long", y = "lat", group = "group",
+                             fill = input$fill),
         color = "white",
         size = .1
       ) +
       coord_map() +
       scale_fill_continuous(low = input$color_low, high = input$color_high) +
       labs(fill = paste0(translate[[input$fill]], " Scores"), title = title) +
-      blank_theme 
+      blank_theme
     p
   })
-  
+
   output$distribution <- renderPlotly({
     # Combines all data frames into a single data frame.
     all_race <- rbind(enrollment_race, gt_race, ap_race, ib_race)
-    
-    data <- all_race %>% 
+
+    data <- all_race %>%
       filter(program == input$program)
-    
+
     # Creates a stacked bar chart of all enrollment data.
     graph <- ggplot(data) +
       geom_col(
@@ -413,21 +416,24 @@ server <- function(input, output) {
         x = "Program", y = "Proportion", fill = "Race",
         title = "Distribution of Race Across Educational Programs"
       )
-    
+
     ggplotly(graph)
   })
-  
-  output$barchart <- renderPlotly({
-    final_data <- race_score_data %>% 
-      filter(Test_Type == toupper(input$score_type),
-             Grade == input$grade_level,
-             Race %in% input$race_input)
-    
-    score_and_race <- ggplot(data = final_data) +
-    geom_col(mapping = aes(x = Race, y = Score), fill = "darkolivegreen4",
-             width = 0.5, position = position_dodge(width = 1)) +
-    labs(title = "Average NAEP Score by Race") +
-    coord_flip()
-  })
 
+  output$barchart <- renderPlotly({
+    final_data <- race_score_data %>%
+      filter(
+        Test_Type == toupper(input$score_type),
+        Grade == input$grade_level,
+        Race %in% input$race_input
+      )
+
+    score_and_race <- ggplot(data = final_data) +
+      geom_col(
+        mapping = aes(x = Race, y = Score), fill = "darkolivegreen4",
+        width = 0.5, position = position_dodge(width = 1)
+      ) +
+      labs(title = "Average NAEP Score by Race") +
+      coord_flip()
+  })
 }
