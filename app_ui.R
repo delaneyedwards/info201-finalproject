@@ -168,10 +168,11 @@ stacked_bar_chart_page <- tabPanel(
         inputId = "program",
         label = "Choose the program You Want to Evaluate",
         choices = list(
-          "All Students" = "all_students",
-          "Advanced Placement" = "AP",
-          "Gifted and Talented" = "GT",
-          "International Baccalaureate" = "IB"
+          "All Students" = "All Students",
+          "Advanced Placement" = "Advanced Placement",
+          "Gifted and Talented" = "Gifted and Talented",
+          "International Baccalaureate" = "International Baccalaureate",
+          "All Programs" = "All Programs"
         ),
         selected = "all_students"
       ),

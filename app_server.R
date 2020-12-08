@@ -190,7 +190,7 @@ enrollment_race <- enrollment %>%
   filter(count >= 0) %>%
   group_by(race) %>%
   summarise(total = sum(count, na.rm = TRUE)) %>%
-  mutate(program = "all_students")
+  mutate(program = "All Students")
 
 # Creates a data frame containing the number of students of each race enrolled
 # in Gifted and Talented programs.
@@ -247,7 +247,7 @@ gt_race <- gt %>%
   filter(count >= 0) %>%
   group_by(race) %>%
   summarise(total = sum(count, na.rm = TRUE)) %>%
-  mutate(program = "GT")
+  mutate(program = "Gifted and Talented")
 
 # Creates a data frame containing the number of students of each race enrolled
 # in the Advanced Placement program.
@@ -303,7 +303,7 @@ ap_race <- ap %>%
   filter(count >= 0) %>%
   group_by(race) %>%
   summarise(total = sum(count, na.rm = TRUE)) %>%
-  mutate(program = "AP")
+  mutate(program = "Advanced Placement")
 
 # Creates a data frame containing the number of students of each race enrolled
 # in the International Baccalaureate.
@@ -360,7 +360,7 @@ ib_race <- ib %>%
   filter(count >= 0) %>%
   group_by(race) %>%
   summarise(total = sum(count, na.rm = TRUE)) %>%
-  mutate(program = "IB")
+  mutate(program = "International Baccalaureate")
 
 
 server <- function(input, output) {
