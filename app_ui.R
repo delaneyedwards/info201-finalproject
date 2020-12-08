@@ -41,7 +41,10 @@ intro_page <- tabPanel(
   characteristics, early childhood education, pathways to college and career,
   etc."),
 
-  img(src = "https://yliu143.files.wordpress.com/2013/09/d3806us0.jpg")
+  img(src = "https://yliu143.files.wordpress.com/2013/09/d3806us0.jpg"),
+
+  h4("By: Kellen McGibbon, Delaney Edwards,
+     Brian Park, Angela Yun, Sahithi Yakkali")
 )
 
 summary_page <- tabPanel(
