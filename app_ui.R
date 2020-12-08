@@ -196,8 +196,7 @@ stacked_bar_chart_page <- tabPanel(
           "All Students" = "All Students",
           "Advanced Placement" = "Advanced Placement",
           "Gifted and Talented" = "Gifted and Talented",
-          "International Baccalaureate" = "International Baccalaureate",
-          "All Programs" = "All Programs"
+          "International Baccalaureate" = "International Baccalaureate"
         ),
         selected = "all_students"
       ),
