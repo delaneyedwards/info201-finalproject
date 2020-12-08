@@ -376,7 +376,7 @@ server <- function(input, output) {
       ) +
       coord_map() +
       scale_fill_continuous(low = input$color_low, high = input$color_high) +
-      labs(fill = "Dollars per Child", title = title) +
+      labs(fill = "Dollars Spent per Child", title = title) +
       blank_theme
     p
   })
@@ -392,7 +392,7 @@ server <- function(input, output) {
       ) +
       coord_map() +
       scale_fill_continuous(low = input$color_low, high = input$color_high) +
-      labs(fill = translate[[input$fill]], title = title) +
+      labs(fill = paste0(translate[[input$fill]], " Scores"), title = title) +
       blank_theme 
     p
   })
